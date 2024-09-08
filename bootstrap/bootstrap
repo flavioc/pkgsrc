@@ -894,6 +894,12 @@ UnixWare)
 	machine_arch=`uname -m`
 	CC="gcc -DUNIXWARE"; export CC
 	;;
+GNU)
+	root_group=root
+	need_awk=yes
+	machine_arch=i686
+	export CFLAGS="-DMAXPATHLEN=4096 -DPATH_MAX=4096 ${CFLAGS}"
+	;;
 *)
 	echo "This platform ($opsys) is untried - good luck, and thanks for using pkgsrc"
 	root_group=wheel
@@ -1001,17 +1007,17 @@ check_prog sedprog sed
 check_prog shprog sh
 check_prog whoamiprog whoami
 
-if [ -d "${wrkdir}" ] || [ -f "${wrkdir}" ]; then
-	die "\"${wrkdir}\" already exists, please remove it or use --workdir"
-fi
+#if [ -d "${wrkdir}" ] || [ -f "${wrkdir}" ]; then
+#	die "\"${wrkdir}\" already exists, please remove it or use --workdir"
+#fi
 
-if [ -f "${prefix}/share/mk/sys.mk" ]; then
-	die "\"${prefix}\" already in use, remove it or use a different --prefix"
-fi
+#if [ -f "${prefix}/share/mk/sys.mk" ]; then
+#	die "\"${prefix}\" already in use, remove it or use a different --prefix"
+#fi
 
-if [ -d "${pkgdbdir}/bootstrap-mk-files-"* ]; then
-	die "\"${pkgdbdir}\" already in use, remove it or use a different --pkgdbdir"
-fi
+#if [ -d "${pkgdbdir}/bootstrap-mk-files-"* ]; then
+#	die "\"${pkgdbdir}\" already in use, remove it or use a different --pkgdbdir"
+#fi
 
 mkdir_p_early ${wrkdir}
 if touch ${wrkdir}/.writeable; then
