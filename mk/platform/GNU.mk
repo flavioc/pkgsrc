@@ -85,4 +85,4 @@ _GLIBC_VERSION_CMD?=	ldconfig --version | \
 GLIBC_VERSION=		${_GLIBC_VERSION_CMD:sh}
 
 # Define path max as the Hurd does not define it.
-CFLAGS+=	-DMAXPATHLEN=4096 -DPATH_MAX=4096
+CFLAGS+=	-DMAXPATHLEN=4096 -DPATH_MAX=4096 -Wno-error=implicit-function-declaration
