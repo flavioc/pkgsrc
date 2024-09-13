@@ -41,6 +41,8 @@ LDFLAGS+=	-pthread
 
 .if ${OPSYS} == "FreeBSD"
 BUILD_TARGET=	freebsd
+.elif ${OPSYS} == "GNU"
+BUILD_TARGET=   linux
 .elif !empty(OPSYS:M*BSD*) || ${OPSYS} == "DragonFly"
 BUILD_TARGET=	bsd
 .elif ${OPSYS} == "Linux"

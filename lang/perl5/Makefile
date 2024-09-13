@@ -50,6 +50,7 @@ CONFIGURE_ARGS+=	-sde
 CONFIGURE_ARGS+=	-Dldflags=${LDFLAGS:Q}
 MAKE_ENV+=		LC_ALL="C"
 LDFLAGS.QNX+=		-lm
+LDFLAGS.GNU+=           -lm
 
 CONFIGURE_ARGS.SunOS+=	-Aundef:csh
 
